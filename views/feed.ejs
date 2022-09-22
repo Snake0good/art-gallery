@@ -1,15 +1,22 @@
 <%- include('partials/header') -%>
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-    </div>
-  </div>  
+<div class="w-full p-3 my-10">
+  <h1 class="text-3xl md:text-5xl text-center">Here are some recent additions to our gallery</h1>
+  <div class="row justify-content-center mt-5">
+      <ul class="w-full flex flex-wrap">
+          <!-- <% let postsLength = Math.min(10, posts.length) %> -->
+          <% for(var i=0; i<postsLength; i++) {%>
+              <li class="w-full md:w-1/2 lg:w-1/4 cursor">
+                  <a href="/post/<%= posts[i]._id%>" class="w-full h-full">
+                      <div class="p-3 h-full">
+                          <div class="rounded-xl w-full overflow-hidden hover:shadow-xl hover:scale-105 duration-300">
+                              <img src="<%= posts[i].image%>" class="object-cover h-[400px] w-full">
+                          </div>
+                      </div>
+                  </a>
+              <h1><% posts[i].user.userName %></h1>
+              </li>
+          <% } %>
+      </div>
+  </ul>
+</div> 
 <%- include('partials/footer') -%>
