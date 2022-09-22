@@ -1,40 +1,49 @@
 <%- include('partials/header') -%>
 
-<main class="container">
-  <div class="row justify-content-center">
-    <section class="col-6 mt-5">
+<main class="min-h-[500px] flex">
+  <div class="hidden md:flex flex-col md:w-2/5 bg-blue-300 min-h-full p-10">
+    <img src="/imgs/high-street-circle.png" class="w-32 mb-8"/>
+    <h1 class="text-2xl">Discover High Street's Top Designers and Creatives.</h1>
+  </div>
+
+
+  <div class="w-full md:w-3/5 flex place-items-center justify-center p-16 md:p-24 relative">
+    <section class="w-full h-full ">
+      <h1 class="text-2xl">Login to High Street Art</h1>
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-      <div class="alert alert-danger"><%= el.msg %></div>
+      <div class="text-red-500"><%= el.msg %></div>
       <% }) %> <% } %> <% if (locals.messages.info) { %> <%
       messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
+      <div class="text-red-500"><%= el.msg %></div>
       <% }) %> <% } %>
       <form action="/login" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
+        <div class="my-5 w-full flex flex-col">
+          <label for="exampleInputEmail1" class="font-bold">Email address</label>
           <input
             type="email"
-            class="form-control"
+            class="bg-gray-200 py-2 px-1 mt-1 rounded-lg"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="email"
           />
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+        
+        <div class="my-5 w-full flex flex-col">
+          <label for="exampleInputPassword1" class="font-bold">Password</label>
           <input
             type="password"
-            class="form-control"
+            class="bg-gray-200 py-2 px-1 mt-1 rounded-lg"
             id="exampleInputPassword1"
             name="password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="font-bold w-full md:w-44 py-3 mt-4 bg-pink-500 text-white rounded-xl hover:opacity-80">Log In</button>
+
+        <h1 class="mt-2">Not a member? <a href="/signup" class="text-blue-500">Sign up now</a></h1>
       </form>
     </section>
   </div>
 </main>
+
 
 <%- include('partials/footer') -%>

@@ -1,5 +1,15 @@
+const Post = require("../models/Post");
+
 module.exports = {
-  getIndex: (req, res) => {
-    res.render("index.ejs");
+  getIndex: async (req, res) => {
+    
+    try {
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("index.ejs", { posts: posts });
+      // res.render("feed.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+
   },
 };

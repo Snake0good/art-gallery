@@ -26,6 +26,7 @@ app.set("view engine", "ejs");
 //Static Folder
 app.use(express.static("public"));
 
+
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -59,5 +60,5 @@ app.use("/post", postRoutes);
 
 //Server Running
 app.listen(process.env.PORT, () => {
-  console.log("Server is running, you better catch it!");
+  console.log(`Server is running, you better catch it! Click here: http://localhost:${process.env.PORT}`);
 });

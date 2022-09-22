@@ -1,39 +1,60 @@
 <%- include('partials/header') -%>
-    <main class="container">
-        <div class="row justify-content-center">
-            <section class="col-6 mt-5">
-                <% if (locals.messages.errors) { %>
-                    <% messages.errors.forEach( el => { %>
-                        <div class="alert alert-danger"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <% if (locals.messages.info) { %>
-                    <% messages.info.forEach( el => { %>
-                        <div class="alert alert-info"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <form action="/signup" method="POST">
-                    <div class="mb-3">
-                        <label for="userName" class="form-label">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
-                      </div>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </section>
-        </div>
+    <main class="min-[500px] flex">
+      <div class="hidden md:flex flex-col md:w-2/5 bg-blue-300 min-h-full p-10">
+        <img src="/imgs/high-street-circle.png" class="w-32 mb-8"/>
+        <h1 class="text-2xl">Sign Up and discover High Street's Top Designers and Creatives.</h1>
+      </div>
+      
+      
+      
+      
+      <div class="w-full md:w-3/5 flex place-items-center justify-center p-16 md:p-24 relative">
+        <section class="w-full h-full">
+          <h1 class="text-2xl">Signup to Showcase Your Work</h1>
+          <% if (locals.messages.errors) { %>
+              <% messages.errors.forEach( el => { %>
+                  <div class="text-red-500"><%= el.msg %></div>
+              <% }) %>    
+          <% } %>
+          <% if (locals.messages.info) { %>
+              <% messages.info.forEach( el => { %>
+                  <div class="text-red-500"><%= el.msg %></div>
+              <% }) %>    
+          <% } %>
+          <form action="/signup" method="POST">
+            <div class="my-5 w-full flex flex-col">
+              <label for="userName" class="font-bold">User Name</label>
+              <input type="text" class="bg-gray-200 py-2 px-1 mt-1 rounded-lg" id="userName" name="userName">
+            </div>
+            
+            <div class="my-5 w-full flex flex-col">
+              <label for="exampleInputEmail1" class="font-bold">Email address</label>
+              <input type="email" class="bg-gray-200 py-2 px-1 mt-1 rounded-lg" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+              <div id="emailHelp" class="italic text-gray-500">We'll never share your email.</div>
+            </div>
+            <div class="my-5 w-full flex flex-col">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="bg-gray-200 py-2 px-1 mt-1 rounded-lg" id="password" name="password">
+            </div>
+            <div class="my-5 w-full flex flex-col">
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" class="bg-gray-200 py-2 px-1 mt-1 rounded-lg" id="confirmPassword" name="confirmPassword">
+            </div>
+            <button type="submit" class="font-bold w-full md:w-44 py-3 mt-4 bg-teal-500 text-white rounded-xl hover:opacity-80">Sign Up</button>
+            
+            <h1 class="mt-2">Already a member? <a href="/login" class="text-blue-500">Login</a></h1>
+          
+          </form>
+        </section>
+      </div>
     </main>
+
+    
+
+    <!-- <script>
+      setInterval(() => {
+          location.reload(true)
+      }, 5000)
+    </script> -->
 
 <%- include('partials/footer') -%>
