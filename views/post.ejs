@@ -1,39 +1,54 @@
 <%- include('partials/header') -%>
 
 
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2><%= post.title %></h2>
-      <img class="img-fluid" src="<%= post.image%>" />
-      <div class="row justify-content-between">
-        <form
-          class="col-1"
-          action="/post/likePost/<%= post.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
-        </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
-        <%if(post.user == user.id){ %>
-        <form
-          action="/post/deletePost/<%= post.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
-        </form>
-        <%}%>
+<div class="w-full p-4">
+  <div class="justify-content-center mt-5">
+    <div class="w-full lg:flex">
+      <h2 class="text-4xl font-bold lg:hidden"><%= post.title %></h2>
+      <img class="lg:w-4/6" src="<%= post.image%>" />
+      <div class="flex lg:w-2/6 flex-col lg:justify-start p-3">
+        <div class="">
+            <h2 class="hidden text-4xl font-bold lg:block"><%= post.title %></h2>
+            <div class="flex space-x-8">
+              <div class="flex space-x-2">
+                <form
+                  class="col-1"
+                  action="/post/likePost/<%= post.id %>?_method=PUT"
+                  method="POST"
+                  >
+                  <button class="text-pink-500 text-xl fa fa-heart" type="submit"></button>
+                </form>
+                <h3 class="text-xl"><%= post.likes %></h3>
+              </div>
+              <%if(post.user == user.id){ %>
+                <form
+                action="/post/deletePost/<%= post.id %>?_method=DELETE"
+                method="POST"
+                class=""
+                >
+                <button class="text-slate-600 text-xl fa fa-trash" type="submit"></button>
+              </form>
+              <%}%>
+            </div>
+        </div>
+          
+          <div class=" mt-5">
+            <p><%= post.caption %></p>
+        </div>
+
+        <div class="col-6 mt-5">
+          <a class="flex place-items-center justify-center font-bold min-w-32 py-3 mt-4 outline bg-teal-600 text-white rounded-lg hover:bg-white hover:text-teal-600 duration-300" href="/profile">Return to Profile</a>
+          <a class="flex place-items-center justify-center font-bold min-w-32 py-3 mt-4 outline bg-pink-600 text-white rounded-lg hover:bg-white hover:text-pink-600 duration-300" href="/feed">Return to Feed</a>
+        </div>
       </div>
-    </div>
-    <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
-    </div>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
     </div>
   </div>
 </div>
 
+
+<script>
+      setInterval(() => {
+          location.reload(true)
+      }, 5000)
+    </script>
 <%- include('partials/footer') -%>
